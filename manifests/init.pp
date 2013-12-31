@@ -19,31 +19,30 @@
 
 class snmpd {
   
-service { "snmpd":
-  name => 'snmpd',
-    ensure => running,
-      enable => true,
-        require => Package ["snmpd"],
-        }
+service { 'snmpd':
+  name    => 'snmpd',
+  ensure  => running,
+  enable  => true,
+  require => Package ['snmpd'],
+ }
   
-  package { "snmpd":
+package { 'snmpd':
   ensure => installed,
-          }
+ }
   
- file { "/etc/snmp/snmpd.conf":
-    ensure => present,
-      require => Package["snmpd"],
-        source => "puppet:///modules/snmpd/snmpd.conf",
-      }
-#
-# need to add snmpd as well and then restart snmpd service
-#
+file { '/etc/snmp/snmpd.conf':
+  ensure  => present,
+  require => Package['snmpd'],
+  source  => 'puppet:///modules/snmpd/snmpd.conf',
+}
 
-file { "/etc/default/snmpd":
-   ensure => present,
-    require => Package ["snmpd"],
-      notify => Service ["snmpd"],
-        source => "puppet:///modules/snmpd/snmpd",
+# need to add snmpd as well and then restart snmpd service
+
+file { '/etc/default/snmpd':
+  ensure  => present,
+  require => Package ['snmpd'],
+  notify  => Service ['snmpd'],
+  source  => 'puppet:///modules/snmpd/snmpd',
      }
 }
       
