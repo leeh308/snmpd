@@ -43,7 +43,7 @@ file { "/etc/default/snmpd":
     require => Package ["snmpd"],
       source => "puppet:///modules/snmpd/snmpd",
      }
- }
+ 
 #
 #Need to restart snmpd to force changes
 #
@@ -57,3 +57,5 @@ file { "/etc/default/snmpd":
   notify => Service ["snmpd"],
     require => Package ["snmpd"]
       }
+}
+      
