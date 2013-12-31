@@ -38,9 +38,9 @@ service { 'snmpd':
 #
 # need to add snmpd as well and then restart snmpd service
 #
-# file { '/etc/default/snmpd':
-#   ensure => present,
-#    require => Package [snmpd'],
-#      source => "puppet:///modules/snmpd/snmpd",
-#     }
+file { '/etc/default/snmpd':
+   ensure => present,
+    require => Package [snmpd'],
+      source => "puppet:///modules/snmpd/snmpd",
+     }
  }
