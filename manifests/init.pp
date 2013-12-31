@@ -44,3 +44,16 @@ file { '/etc/default/snmpd':
       source => "puppet:///modules/snmpd/snmpd",
      }
  }
+#
+#Need to restart snmpd to force changes
+#
+service { 'snmpd':
+  ensure => running,
+    enable => true,
+      require => Package ['snmpd']
+        }
+#        
+file { '/etc/default/snmpd':
+  notify => Service ['snmpd'],
+    require => Package ['snmpd']
+      }
