@@ -40,7 +40,7 @@ service { 'snmpd':
 #
 file { '/etc/default/snmpd':
    ensure => present,
-    require => Package [snmpd'],
+    require => Package ['snmpd'],
       source => "puppet:///modules/snmpd/snmpd",
      }
  }
