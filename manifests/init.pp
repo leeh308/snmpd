@@ -50,12 +50,12 @@ file { "/etc/default/snmpd":
 service { "snmpd":
   ensure => running,
     enable => true,
-      require => Package ["snmpd"]
+      require => Package ["snmpd"],
         }
 #        
 file { "/etc/default/snmpd":
   notify => Service ["snmpd"],
-    require => Package ["snmpd"]
+    require => Package ["snmpd"],
       }
 }
       
