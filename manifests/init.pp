@@ -38,6 +38,7 @@ service { "snmpd":
 #
 # need to add snmpd as well and then restart snmpd service
 #
+
 file { "/etc/default/snmpd":
    ensure => present,
     require => Package ["snmpd"],
@@ -47,12 +48,7 @@ file { "/etc/default/snmpd":
 #
 #Need to restart snmpd to force changes
 #
-service { "snmpd":
-  ensure => running,
-    enable => true,
-      require => Package ["snmpd"],
-        }
-#        
+        
 file { "/etc/default/snmpd":
   notify => Service ["snmpd"],
     require => Package ["snmpd"],
