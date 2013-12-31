@@ -42,16 +42,8 @@ service { "snmpd":
 file { "/etc/default/snmpd":
    ensure => present,
     require => Package ["snmpd"],
-      source => "puppet:///modules/snmpd/snmpd",
+      notify => Service ["snmpd"],
+        source => "puppet:///modules/snmpd/snmpd",
      }
- 
-#
-#Need to restart snmpd to force changes
-#
-        
-file { "/etc/default/snmpd":
-  notify => Service ["snmpd"],
-    require => Package ["snmpd"],
-      }
 }
       
